@@ -1,0 +1,188 @@
+<!doctype html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/css/style.css" />
+    </head>
+    <body>
+        <article class="slide">
+            <div></div>
+            <div>
+                <header>
+                    <h1>Coffeescript</h1>
+                    <p>it will change YOUR LIFE</p>
+                </header>
+            </div>
+            <div>
+                <p><em>well, hopefully.</em></p>
+            </div> 
+        </article>
+        <article class="slide">
+            <div></div>
+            <div>
+                <h1>What does it do?</h1>
+            </div>
+            <div class="twocol">
+                <div>
+                <p>It purports to change javascript from this:<p>
+                <img src="/img/will_smith_old.jpg" height="300" alt="serious will smith" />
+                </div>
+                <div>
+                <p>Into this:<p>
+                <img src="/img/will_smith_new.jpg" height="300" alt="new will smith" />
+                </div>
+            </div>
+        </article>
+        <article class="slide">
+            <div></div>
+            <div><h1>How?</h1></div>
+            <div><p>Removing pain points with syntactic sugar</p></div>
+            <div>
+                <ul>
+                    <li>Familiar Classical Inheritance</li>
+                    <li>Strong binding closures</li>
+                    <li>Destructuring Assignment &amp; Splats</li>
+                </ul>
+            </div>            
+        </article>
+        <article class="slide">
+            <div></div>
+            <div><h1>Classical Inheritance</h1></div>
+            <div>
+                <p>Javascript has <strong>really powerful</strong> prototypical inheritance system.</p>
+            </div>
+            <div>
+                <p>As powerful, in fact, as it is <strong>immensely confusing.</strong>
+            </div>
+            <div>
+                <p>
+                    The last thing you want to be doing before a big deadline 
+                    is trying to remember how calling your superclass works in
+                    a prototypical class structure.
+                </p>
+            </div>
+        </article>
+        <article class="slide">
+            <div></div>
+            <div>
+                <h1>so&hellip;</h1>
+                <p>Wouldn&rsquo;t it be nice to just write it like so?</p>
+            </div>
+            <div>
+                <pre>
+<code>class Actor</code>
+<code>    constructor: (saying) -></code>
+<code>        @saying = saying</code>
+<code>    say: () -></code>
+<code>        console.log @saying</code>
+                </pre>
+            </div>
+            <div>
+                <pre>
+<code>class GaryBusey extends Actor </code>
+<code>    constructor: () -></code>
+<code>        super ("loose like a buse'")</code>
+<code>gary: new GaryBusey()</code>
+<code>this.alert gary.say()</code>
+                </pre>
+            </div>
+        </article>
+        <article class="slide">
+            <div></div>
+            <div><h1>Strong Binding</h1></div>
+            <div>
+                <p>So let's just admit it: <span class="keyword">this</span> is confusing in javascript.</p>
+            </div>
+            <div>
+                <p>Not insurmountably so; but you do have to spend a bit of mental overhead trying to determine
+                which context your method is actually executing in.</p>
+            </div>
+            <div>
+                <p>In python, methods are <strong>strongly</strong> bound to their objects.</p>
+<pre>
+<code>class AbrahamLincoln(object):</code>
+<code>    def sword_fight(self):</code>
+<code>        return "totally murder the other \</code>
+<code>          dude, i mean, have you seen his limbs?"</code>
+</pre>
+<pre>
+<code>president = AbrahamLincoln()</code>
+<code>generic_sword_fight = president.sword_fight</code>
+<code>generic_sword_fight.im_self is president \</code>
+<code>  # == True! just can't forget about abe.</code>
+</pre>
+            </div>
+        </article>
+        <article class="slide">
+            <div></div>
+            <div><h1>Let&rsquo;s look at Coffeescript&rsquo;s solution&hellip;</h1></div>
+            <div>
+<pre>
+<code>class DOMKiller </code>
+<code>    constructor: (domelement, message) -></code>
+<code>        @message = message</code>
+<code>        $(domelement).click((event) <mark>=></mark></code>
+<code>            alert <mark>@message</mark>;</code>
+<code>        ) </code>
+</pre>
+            </div>
+            <div><p><strong>See!</strong> See how the fatty arrow <mark>=&gt;</mark> says &ldquo;Hey buddy, I belong to the DOMKiller!&rdquo;</p></div>
+            <div><p>And how the <mark>@message</mark> syntax is a shortcut for <mark>this.message</mark>? <small>I think this a really cool addition.</small></div>
+
+        </article>
+        <article class="slide">
+            <div></div>
+            <div><h1>Destructuring Assignments &amp; Splats</h1></div>
+            <div><p>Coffeescript brings these over, a couple of my favorite timesavers from python.</p></div>
+            <div>
+<pre>
+<code>bam: () -> [0, 1]</code>
+<code><mark>[variable1, variable2]</mark>: bam()</code>
+</pre>
+            </div>
+            <div><p>you can see how it takes the two results and assigns them into variable1 and variable2.</p></div>
+            <div>
+<pre>
+<code>xmen: (wolverine, cyclops, jean_grey, \</code>
+<code>  <mark>other_less_important_xmen...</mark>) -></code>
+<code>    for xman in other_less_important_xmen</code>
+<code>        alert "<mark>$xman</mark> sucks"</code>
+</pre>
+            </div>
+            <div><p>This is, of course, possible in javascript with the <mark>arguments</mark> super-magic keyword, but it seems a little nicer here. Also note the string interpolation with the <mark>xman</mark> variable.</p></div>
+        </article>
+        <article class="slide">
+            <div></div>
+            <div><h1>Wrapping up&hellip;</h1></div>
+            <div>
+                <p>
+                    There are a wealth of other features in Coffeescript. I just wanted to touch on a few of my favorites and hopefully inspire some interest in the language.
+                </p>
+            </div>
+            <div>
+                <p>
+                    Keep in mind, of course, that it&rsquo;s a new language, despite the fact that it compiles to javascript. <strong>Expect a half hour or so of frustration when you start.</strong>
+                </p>
+            </div>
+            <div>
+                <p>
+                    To install it, just <code>sudo brew install coffee-script</code> on OSX.
+                </p>
+            </div>
+            <div>
+                <p>
+                    It&rsquo;s useful to run it in &ldquo;watch&rdquo; mode: <code>coffee --compile --watch directory/* -o js/</code>
+                </p>
+            </div>
+            <div>
+                <p><small>This presentation was actually written using coffeescript. It&rsquo;ll be up on github shortly &mdash; with the disclaimer that it&rsquo;s really, really rough.</small></p>
+            </div>
+        </article>
+        <script type="text/javascript" src="/js/jquery.min.js"></script>
+        <script type="text/javascript" src="/js/slide.js"></script>
+        <script type="text/javascript">
+            $(function () {
+                icedcoffee.init();
+            });
+        </script>
+    </body>
+</html>

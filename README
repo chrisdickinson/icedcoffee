@@ -1,0 +1,18 @@
+IcedCoffee
+==========
+
+IcedCoffee is a really simple slideshow program. Included is my talk on CoffeeScript from the 2010 April ElProg talk.
+
+It's really not that great (written on the world's shortest deadline), but it was written with the intent
+of learning some of the cooler language features of CoffeeScript.
+
+To run it:
+
+    git clone git://github.com/chrisdickinson/icedcoffee.git
+    cd icedcoffee
+    coffee --compile coffee/* -o js/
+    python -m SimpleHTTPServer
+    open "http://localhost:8000/slide1"
+
+Click moves the slideshow forward, shift+click moves it backward (in theory).
+
