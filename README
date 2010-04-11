@@ -10,6 +10,7 @@ To run it:
 
     git clone git://github.com/chrisdickinson/icedcoffee.git
     cd icedcoffee
+    mkdir js
     coffee --compile coffee/* -o js/
     python -m SimpleHTTPServer
     open "http://localhost:8000/slide1"
